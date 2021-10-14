@@ -1,0 +1,61 @@
+{
+  "/data/insert": {
+    "success": false,
+    "message": "新增失败，数据已存在！",
+    "resultOBJ": null
+  },
+  "/data/update": {
+    "success": true,
+    "message": "操作成功",
+    "resultOBJ": null
+  },
+  "/data/findAll": {
+     "success": true,
+    "message": "操作成功",
+    "resultOBJ": {
+        "managementDataList": [
+            {
+                "_id": "kun01&domain",
+                "ip": "kun01",
+                "serivce": "domain",
+                "magnification": 0,
+                "country": null,
+                "province": null,
+                "city": null,
+                "last_update_time": "2020-06-24 16:46:23"
+            },
+            {
+                "_id": "kun01&qqqqqq",
+                "ip": "kun01",
+                "serivce": "qqqqqq",
+                "magnification": 50,
+                "country": null,
+                "province": "北京",
+                "city": null,
+                "last_update_time": "2020-06-24 16:47:27"
+            },
+            {
+                "_id": "dadadassfsfd&qqqqqq",
+                "ip": "dadadassfsfd",
+                "serivce": "qqqqqq",
+                "magnification": 20,
+                "country": "成都",
+                "province": "成都",
+                "city": "华蓥",
+                "last_update_time": null
+            },
+            {
+                "_id": "e8b84b56-5a5a-4d02-972c-f1abc156d571&snmp",
+                "ip": "e8b84b56-5a5a-4d02-972c-f1abc156d571",
+                "serivce": "snmp",
+                "magnification": 45,
+                "country": "中国",
+                "province": "四川",
+                "city": "成都",
+                "last_update_time": null
+            }
+        ],
+        "totalPage": 1
+    }
+  }
+}

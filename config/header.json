@@ -1,0 +1,17 @@
+{
+  "/data/insert": {
+    "Content-Type": "application/json"
+  },
+  "/data/query": {
+    "Content-Type": "application/json"
+  },
+  "/data/findAll": {
+    "Content-Type": "application/json"
+  },
+  "/data/update": {
+    "Content-Type": "application/json"
+  },
+   "/data/delete": {
+    "Content-Type": "application/json"
+  }
+}
