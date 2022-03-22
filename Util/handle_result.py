@@ -18,10 +18,10 @@ def handle_result(url, code):
     :return:
     """
     data = get_value(url, "/config/code_message.json")
-    if data != None:
+    if data is not None:
         for i in data:
             message = i.get(str(code))
-            if message != None:
+            if message is not None:
                 return message
         return None
 

@@ -6,6 +6,7 @@ from Util.handle_json import read_json
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(path)
+sys.path.append(base_path)
 
 
 def get_header_value(header_key):

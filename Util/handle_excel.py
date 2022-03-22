@@ -12,6 +12,7 @@ path = os.getcwd()
 # print(path)
 base_path = os.path.split(path)[0]
 sys.path.append(path)
+sys.path.append(base_path)
 
 
 class HandExcel:

@@ -1,7 +1,5 @@
 import json
 import os
-
-import null
 import requests
 import sys
 from my_logger import logger
@@ -16,7 +14,7 @@ base_path = os.path.split(path)
 base_path = base_path[0]
 # 将base——path添加到环境变量中去
 sys.path.append(base_path)
-path = os.getcwd()
+sys.path.append(path)
 
 
 class baserequest():
@@ -34,7 +32,7 @@ class baserequest():
             write_cookie(cookie_value, get_cookie['is_cookie'])
             logger.error("写入cookies失败")
         res = response.text
-        logger.error("获取{}的数据失败".format(url))
+        # logger.error("获取{}的数据失败".format(url))
         return res
 
     """
@@ -49,7 +47,7 @@ class baserequest():
             write_cookie(cookie_value, get_cookie['is_cookie'])
             logger.error("写入cookies失败")
         res = response.text
-        logger.error("获取{}的数据失败".format(url))
+        # logger.error("获取{}的数据失败".format(url))
         return res
 
     """

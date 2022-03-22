@@ -4,10 +4,12 @@ import sys
 
 from Util.handle_config import conf
 from Util.handle_path import logs_dir
+
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(path)
 sys.path.append(base_path)
+
 
 class MyLogger(logging.Logger):
     """
@@ -43,4 +45,3 @@ else:
     file_name = None
 
 logger = MyLogger(file_name)
-

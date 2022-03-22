@@ -7,6 +7,7 @@ from Util.handle_path import conf_dir
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(path)
+sys.path.append(base_path)
 
 
 class HandleConfig(ConfigParser):

@@ -5,6 +5,7 @@ import time
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(path)
+sys.path.append(base_path)
 
 now_time = time.strftime("%Y-%m-%d %H-%M-%S")
 
