@@ -2,11 +2,13 @@
 # 1、获取cookie
 # 2、写入cookie
 # 3、是否携带
+import os
 import sys
-import json
-from Util.handle_json import get_value, read_json, write_value
-bath_path = 'D:\\Reflection'
-sys.path.append(bath_path)
+from Util.handle_json import read_json, write_value
+
+path = os.getcwd()
+base_path = os.path.split(path)[0]
+sys.path.append(base_path)
 
 
 def get_cookie_value(cookie_key):
@@ -33,7 +35,7 @@ def write_cookie(data, cookie_key):
 
 if __name__ == '__main__':
     data = {
-        "cookie":"2222"
+        "cookie": "2222"
     }
     print(get_cookie_value("web"))
     write_cookie(data, "web")

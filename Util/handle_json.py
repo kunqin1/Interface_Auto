@@ -1,8 +1,10 @@
 # coding = utf-8
+import os
 import sys
 import json
 
-base_path = 'D:\\Reflection'
+path = os.getcwd()
+base_path = os.path.split(path)[0]
 sys.path.append(base_path)
 
 
@@ -14,15 +16,6 @@ def read_json(file_name=None):
     with open(file_path, encoding='UTF-8') as f:
         data = json.load(f)
     return data
-
-
-#
-# "api3/getbanneradvertver2":[
-#         {"1006":"token error"}, code：1006  message:token error
-#         {"1006":"用户名错误"},
-#         {"1006":"密码错误"}
-#     ]
-# 通过字典中get方法通过code获取message
 
 
 def get_value(key, file_name):

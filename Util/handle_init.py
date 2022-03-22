@@ -1,9 +1,12 @@
 # coding =utf-8
 import sys
 import ddt
+from my_logger import logger
 import os
 import configparser
-base_path = 'D:\\Reflection'
+
+path = os.getcwd()
+base_path = os.path.split(path)[0]
 sys.path.append(base_path)
 
 
@@ -29,15 +32,10 @@ class HandleInit:
         cf = self.load_ini()
         try:
             data = cf.get(node, key)
-
         except Exception:
-            print("没有获取到值")
+            logger.error("获取 {} 的value失败".format(key))
             data = None
         return data
 
 
 hi = HandleInit()
-
-
-
-

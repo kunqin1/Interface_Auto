@@ -4,10 +4,12 @@
 """
 import openpyxl
 import sys
-from collections.abc import Iterable
 import os
+from my_logger import logger
+from Util.handle_path import cases_dir
 
-base_path = 'C://Users/Hi/Desktop/test'
+path = os.getcwd()
+base_path = os.path.split(path)[0]
 sys.path.append(base_path)
 
 
@@ -20,21 +22,27 @@ class HandExcel:
         加载excel
         """
         # open_excel = openpyxl.load_workbook(base_path + excel_path)
-        open_excel = openpyxl.load_workbook(base_path + "/case/用例.xlsx")
-        # print(base_path + "/case/用例.xlse")
-        return open_excel
+        try:
+            open_excel = openpyxl.load_workbook(cases_dir)
+            # print(base_path + "/case/用例.xlse")
+            return open_excel
+        except:
+            logger.error("加载 {} 失败".format(cases_dir))
 
     def get_sheet_data(self, index=None):
         """
         加载某个sheet的全部内容
         """
-        # 获取全部的sheet名称存在sheet_name对象中，（sheet_name相当于一个字典）
-        sheet_name = self.load_excel().sheetnames
-        # index就相当于字典的索引
-        if index is None:
-            index = 0
-        data = self.load_excel()[sheet_name[index]]
-        return data
+        try:
+            # 获取全部的sheet名称存在sheet_name对象中，（sheet_name相当于一个字典）
+            sheet_name = self.load_excel().sheetnames
+            # index就相当于字典的索引
+            if index is None:
+                index = 0
+            data = self.load_excel()[sheet_name[index]]
+            return data
+        except:
+            logger.error("获取某个excel的全部数据失败")
 
     def get_cell(self, row, cols):
         """
@@ -72,7 +80,7 @@ class HandExcel:
         wb = self.load_excel()
         wr = wb.active
         wr.cell(row, cols, value)
-        wb.save(base_path + "/case/用例.xlsx")
+        wb.save(base_path + cases_dir)
         wb.close()
 
     def get_columns_value(self, key=None):
@@ -104,16 +112,14 @@ class HandExcel:
         return num
 
     def get_excel_data(self):
-        '''
+        """
         获取excel里面所有的数据
-        '''
+        """
         data_list = []
-        for i in range(self.get_rows() - 1):
+        for i in range(self.get_rows() - 3):
             data_list.append(self.get_rows_value(i + 2))
 
-        # return data_list
-        print(data_list)
-        print(data_list[2])
+        return data_list
 
 
 excel_data = HandExcel()

@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 A TestRunner for use with the Python unit testing framework. It
 generates a HTML report to show the result at a glance.
@@ -54,7 +54,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 __author__ = "Wai Yip Tung"
 __version__ = "0.8.3"
 
-
 """
 Change History
 Version 0.8.4 by GoverSky
@@ -91,6 +90,7 @@ if PY3K:
 else:
     import StringIO
 import copy
+
 
 # ------------------------------------------------------------------------
 # The redirectors below are used to capture output during testing. Output
@@ -348,7 +348,6 @@ function hide_img(obj){
 </html>
 """
     # variables: (title, generator, stylesheet, heading, report, ending)
-
 
     # ------------------------------------------------------------------------
     # Stylesheet
@@ -634,7 +633,6 @@ tr[id^=et]  td { background-color: rgba(249,62,62,.3) !important ; }
 %(id)s: %(output)s
 """  # variables: (id, output)
 
-
     IMG_TMPL = r"""
         <a href="#"  onclick="show_img(this)">显示截图</a>
     <div align="center" class="screenshots"  style="display:none">
@@ -669,7 +667,7 @@ class _TestResult(TestResult):
     # note: _TestResult is a pure representation of results.
     # It lacks the output and reporting ability compares to unittest._TextTestResult.
 
-    def __init__(self, verbosity=1, retry=0,save_last_try=True):
+    def __init__(self, verbosity=1, retry=0, save_last_try=True):
         TestResult.__init__(self)
         self.stdout0 = None
         self.stderr0 = None
@@ -727,18 +725,18 @@ class _TestResult(TestResult):
                 if self.trys <= self.retry:
                     if self.save_last_try:
                         t = self.result.pop(-1)
-                        if t[0]==1:
-                            self.failure_count-=1
+                        if t[0] == 1:
+                            self.failure_count -= 1
                         else:
                             self.error_count -= 1
-                    test=copy.copy(test)
+                    test = copy.copy(test)
                     sys.stderr.write("Retesting... ")
                     sys.stderr.write(str(test))
                     sys.stderr.write('..%d \n' % self.trys)
                     doc = test._testMethodDoc or ''
-                    if doc.find('_retry')!=-1:
+                    if doc.find('_retry') != -1:
                         doc = doc[:doc.find('_retry')]
-                    desc ="%s_retry:%d" %(doc, self.trys)
+                    desc = "%s_retry:%d" % (doc, self.trys)
                     if not PY3K:
                         if isinstance(desc, str):
                             desc = desc.decode("utf-8")
@@ -769,7 +767,7 @@ class _TestResult(TestResult):
         _, _exc_str = self.errors[-1]
         output = self.complete_output()
         self.result.append((2, test, output, _exc_str))
-        if not getattr(test, "driver",""):
+        if not getattr(test, "driver", ""):
             pass
         else:
             try:
@@ -791,7 +789,7 @@ class _TestResult(TestResult):
         _, _exc_str = self.failures[-1]
         output = self.complete_output()
         self.result.append((1, test, output, _exc_str))
-        if not getattr(test, "driver",""):
+        if not getattr(test, "driver", ""):
             pass
         else:
             try:
@@ -808,10 +806,10 @@ class _TestResult(TestResult):
 
 
 class HTMLTestRunner(Template_mixin):
-    def __init__(self, stream=sys.stdout, verbosity=1, title=None, description=None, retry=0,save_last_try=False):
+    def __init__(self, stream=sys.stdout, verbosity=1, title=None, description=None, retry=0, save_last_try=False):
         self.stream = stream
         self.retry = retry
-        self.save_last_try=save_last_try
+        self.save_last_try = save_last_try
         self.verbosity = verbosity
         if title is None:
             self.title = self.DEFAULT_TITLE
@@ -918,8 +916,8 @@ class HTMLTestRunner(Template_mixin):
     def _generate_report(self, result):
         rows = []
         sortedResult = self.sortResult(result.result)
-        #sortedResult  获取所有控制台执行结果
-        #print("----------->",sortedResult)
+        # sortedResult  获取所有控制台执行结果
+        # print("----------->",sortedResult)
         for cid, (cls, cls_results) in enumerate(sortedResult):
             # subtotal for a class
             np = nf = ne = 0
@@ -966,10 +964,26 @@ class HTMLTestRunner(Template_mixin):
         return report
 
     def _generate_report_test(self, rows, cid, tid, n, t, o, e):
+        """
+
+        :param rows:
+        :param cid:
+        :param tid:
+        :param n:
+        :param t:
+        :param o:
+        :param e:
+        :return:
+        """
         # e.g. 'pt1.1', 'ft1.1', etc
         has_output = bool(o or e)
         tid = (n == 0 and 'p' or 'f') + 't%s.%s' % (cid + 1, tid + 1)
-        name = t.id().split('.')[-1]
+        name = t.id().split('_____')[1]
+        # print(name)
+        try:
+            name = name.split("____")[0]
+        except:
+            name = name.split("__")[1]
         if self.verbosity > 1:
             doc = t._testMethodDoc or ''
         else:
@@ -982,7 +996,7 @@ class HTMLTestRunner(Template_mixin):
         tmpl = has_output and self.REPORT_TEST_WITH_OUTPUT_TMPL or self.REPORT_TEST_NO_OUTPUT_TMPL
 
         # o and e should be byte string because they are collected from stdout and stderr?
-        
+
         '''
         if isinstance(o, str):
             # uo = unicode(o.encode('string_escape'))
@@ -1011,14 +1025,14 @@ class HTMLTestRunner(Template_mixin):
             id=tid,
             output=saxutils.escape(uo + ue),
         )
-        if getattr(t,'imgs',[]):
+        if getattr(t, 'imgs', []):
             # 判断截图列表，如果有则追加
             tmp = u""
             for i, img in enumerate(t.imgs):
-                if i==0:
-                    tmp+=""" <img src="data:image/jpg;base64,%s" style="display: block;" class="img"/>\n""" % img
+                if i == 0:
+                    tmp += """ <img src="data:image/jpg;base64,%s" style="display: block;" class="img"/>\n""" % img
                 else:
-                    tmp+=""" <img src="data:image/jpg;base64,%s" style="display: none;" class="img"/>\n""" % img
+                    tmp += """ <img src="data:image/jpg;base64,%s" style="display: none;" class="img"/>\n""" % img
             imgs = self.IMG_TMPL % dict(imgs=tmp)
         else:
             imgs = u"""无截图"""
