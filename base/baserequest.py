@@ -16,6 +16,7 @@ base_path = os.path.split(path)
 base_path = base_path[0]
 # 将base——path添加到环境变量中去
 sys.path.append(base_path)
+path = os.getcwd()
 
 
 class baserequest():

@@ -9,8 +9,9 @@ from my_logger import logger
 from Util.handle_path import cases_dir
 
 path = os.getcwd()
+# print(path)
 base_path = os.path.split(path)[0]
-sys.path.append(base_path)
+sys.path.append(path)
 
 
 class HandExcel:

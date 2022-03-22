@@ -16,6 +16,7 @@ from Util.handle_header import get_header_value
 
 path = os.getcwd()
 base_path = os.path.split(path)[0]
+sys.path.append(path)
 sys.path.append(base_path)
 soure_data = excel_data.get_excel_data()
 

@@ -6,7 +6,7 @@ from my_logger import logger
 from jsonpath_rw import parse
 path = os.getcwd()
 base_path = os.path.split(path)[0]
-sys.path.append(base_path)
+sys.path.append(path)
 
 
 def split_data(data):

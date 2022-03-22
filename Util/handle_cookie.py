@@ -8,7 +8,7 @@ from Util.handle_json import read_json, write_value
 
 path = os.getcwd()
 base_path = os.path.split(path)[0]
-sys.path.append(base_path)
+sys.path.append(path)
 
 
 def get_cookie_value(cookie_key):

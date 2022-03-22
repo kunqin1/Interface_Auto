@@ -6,6 +6,7 @@ import json
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(base_path)
+sys.path.append(path)
 
 
 def read_json(file_name=None):

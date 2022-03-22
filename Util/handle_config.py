@@ -1,7 +1,12 @@
+import sys
 from configparser import ConfigParser
 import os
 
 from Util.handle_path import conf_dir
+
+path = os.getcwd()
+base_path = os.path.split(path)[0]
+sys.path.append(path)
 
 
 class HandleConfig(ConfigParser):
