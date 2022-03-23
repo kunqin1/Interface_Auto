@@ -23,30 +23,32 @@ class baserequest():
 
     def send_post(self, url, data, header=None, get_cookie=None, cookie=None):
         response = requests.post(url=url, data=data, headers=header, cookies=cookie)
-        if get_cookie is not None:
-            # 获取cookies的值为CookieJar类型
-            cookie_value_jar = response.cookies
-            # 使用requests.utils.dict_from_cookiejar转化为字典
-            cookie_value = requests.utils.dict_from_cookiejar(cookie_value_jar)
-            write_cookie(cookie_value, get_cookie['is_cookie'])
-            logger.error("写入cookies失败")
+        try:
+            if get_cookie is not None:
+                # 获取cookies的值为CookieJar类型
+                cookie_value_jar = response.cookies
+                # 使用requests.utils.dict_from_cookiejar转化为字典
+                cookie_value = requests.utils.dict_from_cookiejar(cookie_value_jar)
+                write_cookie(cookie_value, get_cookie['is_cookie'])
+        except:
+            logger.error("写入 {} 的cookie失败".format(url))
         res = response.text
-        # logger.error("获取{}的数据失败".format(url))
         return res
 
     """
     发送get请求
     """
 
-    def send_get(self, url, data, header=None, get_cookie=None, cookie=None):
-        response = requests.post(url=url, data=data, headers=header, cookies=cookie)
-        if get_cookie is not None:
-            cookie_value_jar = response.cookies
-            cookie_value = requests.utils.dict_from_cookiejar(cookie_value_jar)
-            write_cookie(cookie_value, get_cookie['is_cookie'])
-            logger.error("写入cookies失败")
+    def send_get(self, url, data=None, header=None, get_cookie=None, cookie=None):
+        response = requests.get(url=url, data=data, headers=header, cookies=cookie)
+        try:
+            if get_cookie is not None:
+                cookie_value_jar = response.cookies
+                cookie_value = requests.utils.dict_from_cookiejar(cookie_value_jar)
+                write_cookie(cookie_value, get_cookie['is_cookie'])
+        except:
+            logger.error("写入 {} 的cookie失败".format(url))
         res = response.text
-        # logger.error("获取{}的数据失败".format(url))
         return res
 
     """

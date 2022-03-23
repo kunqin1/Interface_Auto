@@ -1,8 +1,9 @@
 {
-  "/data/insert": {
-    "Content-Type": "application/json"
+  "/op/starTalk/list": {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer "
   },
-  "/data/query": {
+  "/op/starTalk": {
     "Content-Type": "application/json"
   },
   "/data/findAll": {

@@ -3,7 +3,6 @@ import sys
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(path)
-sys.path.append(base_path)
 import json
 import time
 import unittest
@@ -17,8 +16,6 @@ from Util.handle_result import handle_result_json
 from Util.handle_cookie import get_cookie_value
 from Util.handle_data import GetData
 from Util.handle_header import get_header_value
-from base.my_logger import logger
-
 
 soure_data = excel_data.get_excel_data()
 
@@ -70,6 +67,7 @@ class TestCase(unittest.TestCase):
                 header = get_header_value(header_id)
 
             res = request.send_main(method, url, data1, cookie, get_cookie, header)
+            print(res)
             # excel_data.excel_write_data(i, 13, res)
             code = res['errorCode']
             message = res['errorDesc']
@@ -112,7 +110,6 @@ if __name__ == "__main__":
     case_path = base_path + "/Run"
     now_time = time.strftime("%Y-%m-%d %H-%M-%S")
     report_path = reports_dir + "/report.html"
-    print(report_path)
     discover = unittest.defaultTestLoader.discover(case_path, pattern="test_run_*.py")
     with open(report_path, "wb") as f:
         runner = HTMLTestRunner.HTMLTestRunner(stream=f, title="测试报告", description="this is test")
