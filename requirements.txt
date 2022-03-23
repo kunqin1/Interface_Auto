@@ -1,0 +1,18 @@
+# allure报告
+allure-pytest==2.9.45
+# 报告模板，这里没用
+conf==0.4.1
+# 日志
+ConfigArgParse==1.5.3
+# 数据驱动
+ddt==1.4.4
+decorator==5.0.9
+
+deepdiff==5.7.0
+
+null==0.6.1
+# 操作excel
+openpyxl==3.0.9
+# 发送请求
+requests==2.24.0
+
