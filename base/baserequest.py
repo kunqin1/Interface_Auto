@@ -1,12 +1,5 @@
-import json
 import os
-import requests
 import sys
-from my_logger import logger
-from requests import utils
-from Util.handle_cookie import write_cookie
-from Util.handle_init import hi
-
 # 获取当前文件的目录，D:\Interface_Auto\base
 path = os.getcwd()
 # 把最后的一个目录和前面的目录分开，返回一个元组('D:\\Interface_Auto', 'base')
@@ -15,6 +8,12 @@ base_path = base_path[0]
 # 将base——path添加到环境变量中去
 sys.path.append(base_path)
 sys.path.append(path)
+import json
+import requests
+from base.my_logger import logger
+from requests import utils
+from Util.handle_cookie import write_cookie
+from Util.handle_init import hi
 
 
 class baserequest():

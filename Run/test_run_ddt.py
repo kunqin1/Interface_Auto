@@ -1,8 +1,12 @@
-import json
 import os
+import sys
+path = os.getcwd()
+base_path = os.path.split(path)[0]
+sys.path.append(path)
+sys.path.append(base_path)
+import json
 import time
 import unittest
-import sys
 import ddt
 import HTMLTestRunner
 from Util.condition_data import get_data
@@ -13,11 +17,9 @@ from Util.handle_result import handle_result_json
 from Util.handle_cookie import get_cookie_value
 from Util.handle_data import GetData
 from Util.handle_header import get_header_value
+from base.my_logger import logger
 
-path = os.getcwd()
-base_path = os.path.split(path)[0]
-sys.path.append(path)
-sys.path.append(base_path)
+
 soure_data = excel_data.get_excel_data()
 
 

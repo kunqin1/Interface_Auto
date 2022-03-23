@@ -2,17 +2,16 @@
 """
 操作excel的内容
 """
-import openpyxl
 import sys
 import os
-from my_logger import logger
-from Util.handle_path import cases_dir
-
 path = os.getcwd()
 # print(path)
 base_path = os.path.split(path)[0]
 sys.path.append(path)
 sys.path.append(base_path)
+import openpyxl
+from base.my_logger import logger
+from Util.handle_path import cases_dir
 
 
 class HandExcel:

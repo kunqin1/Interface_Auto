@@ -1,9 +1,6 @@
 # coding =utf -8
 import os
 import sys
-from Util.handle_excel import excel_data
-import json
-
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(path)

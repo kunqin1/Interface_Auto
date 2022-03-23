@@ -1,12 +1,11 @@
 import os
 import sys
-from Util.handle_json import get_value
-from deepdiff import DeepDiff
-
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(base_path)
 sys.path.append(path)
+from Util.handle_json import get_value
+from deepdiff import DeepDiff
 
 
 def handle_result(url, code):
@@ -38,9 +37,9 @@ def get_result_json(url):
 
 def handle_result_json(dict1, dict2):
     # 传递比较的json格式
-    '''
+    """
     校验格式
-    '''
+    """
     # 判断两个是字典
     if isinstance(dict1, dict) and isinstance(dict2, dict):
         dict1 = {"aaa": "AAA", "bbb": "BBBB", "CC": [{"11": "22"}, {"11": "44"}]}
