@@ -71,7 +71,7 @@ class TestCase(unittest.TestCase):
 
             res = request.send_main(method, url, data1, cookie, get_cookie, header)
             # excel_data.excel_write_data(i, 13, res)
-            code = str(res['errorCode'])
+            code = res['errorCode']
             message = res['errorDesc']
             # message+errorcode
 
