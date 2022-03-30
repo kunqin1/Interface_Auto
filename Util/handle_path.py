@@ -24,5 +24,17 @@ logs_dir = os.path.join(base_path, "Outputs", "logs")
 # 配置文件路径
 conf_dir = os.path.join(base_path, "config", "server.ini")
 
+# header配置文件路径
+header_dir = os.path.join(base_path, "config", "header.json")
+
+# code_message信息配置文件路径
+code_dir = os.path.join(base_path, "config", "code_message.json")
+
+# 断言json配置文件路径
+json_dir = os.path.join(base_path, "config", "result.json")
+
+# cookie存放配置文件路径
+cookie_dir = os.path.join(base_path, "Config", "cookie.json")
+
 # 页面截图路径
 screenshot_dir = os.path.join(base_path, "Outputs", "screenshots")
