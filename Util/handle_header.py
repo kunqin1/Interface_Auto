@@ -7,11 +7,12 @@ sys.path.append(path)
 sys.path.append(base_path)
 from base.my_logger import logger
 from Util.handle_json import read_json
+from Util.handle_path import header_dir
 
 
 def get_header_value(header_key):
     try:
-        header = read_json("/config/header.json")
+        header = read_json(header_dir)
         # data1 = json.loads(data)
         return header[header_key]
     except:
