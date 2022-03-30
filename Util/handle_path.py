@@ -22,7 +22,7 @@ reports_dir = os.path.join(base_path, "Outputs", "reports")
 logs_dir = os.path.join(base_path, "Outputs", "logs")
 
 # 配置文件路径
-conf_dir = os.path.join(base_path, "config")
+conf_dir = os.path.join(base_path, "config", "server.ini")
 
 # 页面截图路径
 screenshot_dir = os.path.join(base_path, "Outputs", "screenshots")

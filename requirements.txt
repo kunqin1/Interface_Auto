@@ -8,7 +8,7 @@ ConfigArgParse==1.5.3
 ddt==1.4.4
 decorator==5.0.9
 
-deepdiff==5.7.0
+deepdiff==5.7.0为啥要读写分离，分库分表
 
 null==0.6.1
 # 操作excel

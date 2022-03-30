@@ -4,6 +4,7 @@
 """
 import sys
 import os
+
 path = os.getcwd()
 # print(path)
 base_path = os.path.split(path)[0]
@@ -70,6 +71,16 @@ class HandExcel:
             row_list.append(i.value)
         return row_list
 
+    def get_excel_data(self):
+        """
+        获取excel里面所有的数据
+        """
+        data_list = []
+        for i in range(self.get_rows() - 3):
+            data_list.append(self.get_rows_value(i + 2))
+
+        return data_list
+
     def excel_write_data(self, row, cols, value):
         """
         写入数据
@@ -112,20 +123,11 @@ class HandExcel:
             num = num + 1
         return num
 
-    def get_excel_data(self):
-        """
-        获取excel里面所有的数据
-        """
-        data_list = []
-        for i in range(self.get_rows() - 3):
-            data_list.append(self.get_rows_value(i + 2))
-
-        return data_list
-
 
 excel_data = HandExcel()
 
 if __name__ == '__main__':
     exec = HandExcel()
-    excel_data.get_excel_data()
+    data = exec.get_excel_data()
+    print(data)
     # print(exec.get_rows_value(2))

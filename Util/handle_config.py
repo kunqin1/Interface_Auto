@@ -16,7 +16,7 @@ class HandleConfig(ConfigParser):
         self.read(file_path, encoding="utf-8")
 
 
-file_path = os.path.join(conf_dir, "server.ini")
+file_path = conf_dir
 conf = HandleConfig(file_path)
 
 if __name__ == '__main__':

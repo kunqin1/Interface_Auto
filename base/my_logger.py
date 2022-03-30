@@ -23,13 +23,13 @@ class MyLogger(logging.Logger):
         fmt = '%(asctime)s %(name)s %(levelname)s %(filename)s-%(lineno)d line：%(message)s'
         formatter = logging.Formatter(fmt)
 
-        # 控制台渠道,创建一个流处理器handler并设置其日志格式
-        handle1 = logging.StreamHandler()
-        handle1.setFormatter(formatter)
-        # 为日志器添加处理器handle1
-        self.addHandler(handle1)
+        # 控制台渠道输出日志,创建一个流处理器handler并设置其日志格式
+        # handle1 = logging.StreamHandler()
+        # handle1.setFormatter(formatter)
+        # # 为日志器添加处理器handle1
+        # self.addHandler(handle1)
 
-        if file:
+        if file is not None:
             # 文件渠道
             handle2 = logging.FileHandler(file, encoding="utf-8")
             handle2.setFormatter(formatter)

@@ -6,6 +6,7 @@ base_path = os.path.split(path)[0]
 sys.path.append(base_path)
 sys.path.append(path)
 from base.my_logger import logger
+from Util.handle_path import conf_dir
 import configparser
 
 
@@ -16,7 +17,7 @@ class HandleInit:
         加载ini文件
         :return:
         """
-        file_path = base_path + "/config/server.ini"
+        file_path = conf_dir
         cf = configparser.ConfigParser()
         # 获取ini文件，encoding="utf-8-sig"解决中文乱码
         cf.read(file_path, encoding="utf-8-sig")
