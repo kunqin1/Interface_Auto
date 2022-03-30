@@ -1,11 +1,13 @@
 import os
 import sys
+
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(base_path)
 sys.path.append(path)
 from Util.handle_json import get_value
 from deepdiff import DeepDiff
+from Util.handle_path import code_dir, json_dir
 
 
 def handle_result(url, code):
@@ -16,7 +18,7 @@ def handle_result(url, code):
     :param code: 返回参数的code
     :return:
     """
-    data = get_value(url, "/config/code_message.json")
+    data = get_value(url, code_dir)
     if data is not None:
         for i in data:
             message = i.get(str(code))
@@ -31,7 +33,7 @@ def get_result_json(url):
     :param url:
     :return:
     """
-    data = get_value(url, "/config/result.json")
+    data = get_value(url, json_dir)
     print(data)
 
 
