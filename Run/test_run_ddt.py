@@ -34,6 +34,8 @@ class TestCase(unittest.TestCase):
         i = excel_data.get_rows_number(case_id)
         if is_run == 'yes':
             is_depend = GetData.get_isDpend(data)
+            # print(type(is_depend))
+            # 获取请求数据
             data1 = json.loads(GetData.get_RQpar(data))
             if is_depend:
                 '''
@@ -41,7 +43,9 @@ class TestCase(unittest.TestCase):
                 '''
                 depend_key = GetData.get_replace_key(data)
                 depend_data = get_data(is_depend)
-                data1[depend_key] = depend_data
+                for i in range(len(depend_data)):
+                    data1[depend_key[i]] = depend_data[i]
+            print(data1)
             # 请求方式
             method = GetData.get_method(data)
             # url
@@ -109,7 +113,8 @@ class TestCase(unittest.TestCase):
 if __name__ == "__main__":
     case_path = base_path + "/Run"
     now_time = time.strftime("%Y-%m-%d %H-%M-%S")
-    report_path = reports_dir + "/report.html"
+    report_path = os.path.join(reports_dir, "{} report.html".format(now_time))
+    print(report_path)
     discover = unittest.defaultTestLoader.discover(case_path, pattern="test_run_*.py")
     with open(report_path, "wb") as f:
         runner = HTMLTestRunner.HTMLTestRunner(stream=f, title="测试报告", description="this is test")

@@ -1,6 +1,7 @@
 # coding =utf -8
 import os
 import sys
+import json
 path = os.getcwd()
 base_path = os.path.split(path)[0]
 sys.path.append(path)
@@ -16,7 +17,7 @@ class get_data():
         is_run = data[3]
         return is_run
 
-    def get_caseId(self,data = None):
+    def get_caseId(self, data=None):
         caseid = data[0]
         return caseid
 
@@ -47,15 +48,36 @@ class get_data():
         return cookie
 
     def get_replace_key(self, data=None):
-        key = data[5]
-        return key
+        """
+        获取代替的参数名称
+        :param data:
+        :return:
+        """
+        try:
+            key = json.loads(data[5])
+            return key
+        except:
+            return None
 
     def get_isDpend(self, data=None):
-        is_depend = data[4]
-        return is_depend
+        """
+        获取前置数据表达式
+        :param data:
+        :return:
+        """
+        try:
+            is_depend = json.loads(data[4])
+            return is_depend
+        except:
+            return None
 
     def get_excepect_result(self, data=None):
-        excepect_result =data[11]
+        """
+        获取预期结果的值
+        :param data:
+        :return:
+        """
+        excepect_result = data[11]
         return excepect_result
 
 
