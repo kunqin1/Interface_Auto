@@ -38,3 +38,4 @@ cookie_dir = os.path.join(base_path, "Config", "cookie.json")
 
 # 页面截图路径
 screenshot_dir = os.path.join(base_path, "Outputs", "screenshots")
+

@@ -33,27 +33,8 @@
                 "province": "北京",
                 "city": null,
                 "last_update_time": "2020-06-24 16:47:27"
-            },
-            {
-                "_id": "dadadassfsfd&qqqqqq",
-                "ip": "dadadassfsfd",
-                "serivce": "qqqqqq",
-                "magnification": 20,
-                "country": "成都",
-                "province": "成都",
-                "city": "华蓥",
-                "last_update_time": null
-            },
-            {
-                "_id": "e8b84b56-5a5a-4d02-972c-f1abc156d571&snmp",
-                "ip": "e8b84b56-5a5a-4d02-972c-f1abc156d571",
-                "serivce": "snmp",
-                "magnification": 45,
-                "country": "中国",
-                "province": "四川",
-                "city": "成都",
-                "last_update_time": null
             }
+
         ],
         "totalPage": 1
     }

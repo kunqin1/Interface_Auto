@@ -23,7 +23,6 @@ class HandExcel:
         """
         加载excel
         """
-        # open_excel = openpyxl.load_workbook(base_path + excel_path)
         try:
             open_excel = openpyxl.load_workbook(cases_dir)
             # print(base_path + "/case/用例.xlse")
@@ -42,7 +41,10 @@ class HandExcel:
             if index is None:
                 index = 0
             data = self.load_excel()[sheet_name[index]]
+            # 返回第一个sheet对象
             return data
+            # print(data)
+
         except:
             logger.error("获取某个excel的全部数据失败")
 
@@ -92,7 +94,7 @@ class HandExcel:
         wb = self.load_excel()
         wr = wb.active
         wr.cell(row, cols, value)
-        wb.save(base_path + cases_dir)
+        wb.save(cases_dir)
         wb.close()
 
     def get_columns_value(self, key=None):
@@ -128,6 +130,6 @@ excel_data = HandExcel()
 
 if __name__ == '__main__':
     exec = HandExcel()
-    data = exec.get_excel_data()
-    print(data)
+    exec.get_sheet_data()
+    # print(data)
     # print(exec.get_rows_value(2))
