@@ -1,5 +1,6 @@
 import os
 import sys
+
 # 获取当前文件的目录，D:\Interface_Auto\base
 path = os.getcwd()
 # 把最后的一个目录和前面的目录分开，返回一个元组('D:\\Interface_Auto', 'base')
@@ -57,20 +58,23 @@ class baserequest():
 
     def send_main(self, method, url, data, header=None, get_cookie=None, cookie=None):
         base_host = hi.get_value('host')  # 获取host
-        if base_host:
-            if 'http' not in url:
-                url = base_host + url
-            if method == 'post':
-                res = self.send_post(url, data, header, get_cookie, cookie)
+        try:
+            if base_host:
+                if 'http' not in url:
+                    url = base_host + url
+                if method == 'post':
+                    res = self.send_post(url, data, header, get_cookie, cookie)
+                else:
+                    res = self.send_get(url, data, header, get_cookie, cookie)
+                try:
+                    res = json.loads(res)
+                except:
+                    logger.info("这是一个text")
+                return res
             else:
-                res = self.send_get(url, data, header, get_cookie, cookie)
-            try:
-                res = json.loads(res)
-            except:
-                logger.info("这是一个text")
-            return res
-        else:
-            logger.error("获取host失败")
+                logger.error("获取host失败")
+        except:
+            logger.error("发送%s请求失败" % url)
 
 
 """
