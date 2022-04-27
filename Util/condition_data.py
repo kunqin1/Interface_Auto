@@ -2,7 +2,6 @@
 import json
 import sys
 import os
-import jsonpath
 
 path = os.getcwd()
 base_path = os.path.split(path)[0]
